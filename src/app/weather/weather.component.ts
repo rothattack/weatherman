@@ -1,7 +1,14 @@
 import { SocialUser } from '@abacritt/angularx-social-login';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, catchError, from, throwError } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  catchError,
+  from,
+  takeUntil,
+  throwError,
+} from 'rxjs';
 import { AppState } from '../core/types';
 
 @Component({
@@ -9,11 +16,12 @@ import { AppState } from '../core/types';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss'],
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent implements OnInit, OnDestroy {
   user$: Observable<SocialUser>;
   weatherApiKey = '';
   weatherApiUrl = '';
   weatherApiResponse = '';
+  destroy$ = new Subject();
 
   constructor(private store: Store<{ state: AppState }>) {}
 
@@ -21,6 +29,7 @@ export class WeatherComponent implements OnInit {
     this.user$ = this.store.select(({ state }) => state.user);
     this.store
       .select(({ state }) => state.setting)
+      .pipe(takeUntil(this.destroy$))
       .subscribe(({ weatherApiKey, weatherApiUrl }) => {
         this.weatherApiKey = weatherApiKey;
         this.weatherApiUrl = weatherApiUrl;
@@ -42,5 +51,9 @@ export class WeatherComponent implements OnInit {
       .subscribe((response) => {
         this.weatherApiResponse = JSON.stringify(response, null, '  ');
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null);
   }
 }

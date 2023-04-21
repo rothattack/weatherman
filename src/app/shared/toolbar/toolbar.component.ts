@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../core/types';
+import { userUpdate } from '../../core/store/actions';
 
 @Component({
   selector: 'app-toolbar',
@@ -25,7 +26,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.signOut();
     this.router.navigate(['/home']);
+    this.store.dispatch(userUpdate(null));
+    this.authService.signOut();
   }
 }
