@@ -1,0 +1,18 @@
+<div class="container">
+  <div *ngIf="!(user$ | async)">
+    <h1>Please SignIn</h1>
+    <p>
+      To access our special weather information system please login using
+      Google.
+    </p>
+  </div>
+  <div *ngIf="user$ | async as user">
+    <h1>Hello, {{ user.name }}!</h1>
+    <p>Here's a list of our features</p>
+    <ul>
+      <li>Top Navigation - Contains links to navigate to views in the app.</li>
+      <li>Weather Page - Query a place's current weather information.</li>
+      <li>Settings Page - Update your weather URL and API Key.</li>
+    </ul>
+  </div>
+</div>

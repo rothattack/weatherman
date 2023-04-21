@@ -1,0 +1,13 @@
+{
+  "PAGES": {
+    "HOME": {
+      "TITLE": "WeatherMan - Home",
+      "GO_TO_DETAIL": "Go to Detail",
+      "GO_TO_WEATHER": "Go to Weather"
+    },
+    "DETAIL": {
+      "TITLE": "WeatherMan - Detail",
+      "BACK_TO_HOME": "Back to Home"
+    }
+  }
+}

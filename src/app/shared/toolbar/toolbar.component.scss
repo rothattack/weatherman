@@ -1,0 +1,30 @@
+.nav-wrapper {
+  height: 4rem;
+  padding: 0 1rem;
+  background-color: steelblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 0.15rem;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    a {
+      color: white;
+    }
+  }
+
+  .logout {
+    background: white;
+    color: steelblue;
+    font-weight: bold;
+  }
+}

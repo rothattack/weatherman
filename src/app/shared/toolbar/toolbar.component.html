@@ -1,0 +1,15 @@
+<div class="nav-wrapper">
+  <h1>WeatherMan</h1>
+  <div role="navigation">
+    <div class="nav" *ngIf="isLoggedIn$ | async">
+      <a routerLink="/detail">Weather</a>
+      <a routerLink="/settings">Settings</a>
+      <button class="button logout" (click)="logout()">Sign Out</button>
+    </div>
+    <asl-google-signin-button
+      *ngIf="!(isLoggedIn$ | async)"
+      type="standard"
+      size="medium"
+    ></asl-google-signin-button>
+  </div>
+</div>

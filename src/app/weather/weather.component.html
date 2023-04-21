@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="flex row between center">
+    <h1 class="title">
+      {{ "WEATHER" | translate }}
+    </h1>
+    <ng-container *ngIf="user$ | async as user">
+      <h2>Welcome {{ user.name }}</h2>
+    </ng-container>
+  </div>
+  <form class="flex col">
+    <label for="location">City:</label>
+    <input id="location" type="text" #city />
+    <button class="button" (click)="submit(city.value)">Submit</button>
+  </form>
+  <h2>Response:</h2>
+  <pre>{{ weatherApiResponse }}</pre>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Settings</h1>
+
+  <div class="flex col">
+    <h2>Weather API Settings:</h2>
+    <label for="url">API URL:</label>
+    <input type="text" id="url" [formControl]="weatherApiUrl" />
+
+    <label for="key">API Key:</label>
+    <textarea
+      name="key"
+      id="key"
+      rows="10"
+      [formControl]="weatherApiKey"
+    ></textarea>
+    <button class="button update" (click)="updateSettings()">Save</button>
+  </div>
+</div>
