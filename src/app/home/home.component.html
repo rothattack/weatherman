@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="!(user$ | async)">
+  <div *ngIf="(user$ | async) === null">
     <h1>Please SignIn</h1>
     <p>
       To access our special weather information system please login using
