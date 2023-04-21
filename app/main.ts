@@ -18,7 +18,7 @@ async function createWindow(): Promise<BrowserWindow> {
     synchronize: true,
     logging: true,
     logger: 'simple-console',
-    database: './data/database.sqlite',
+    database: __dirname + '/data/database.sqlite',
     entities: [Setting, User],
   });
 
